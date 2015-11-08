@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+        <title>Usuarios</title>
+    </h:head>
+    <h:body>
+        <ui:component>
+
+            <h:form>
+                <p:growl id="msgs" showDetail="true" />
+                <p:panel header="Usuarios Existentes" style="margin-bottom:10px;">
+                    <p:dataTable value="#{loginBacking.usuarios}" var="usuario" > 
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Usuario"></h:outputText>
+                            </f:facet> 
+                            <h:outputText value="#{usuario.usuario}" ></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Contraseña"></h:outputText>
+                            </f:facet> 
+                            <h:outputText value="#{usuario.contraseña}" ></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <h:form>
+                                <h:commandButton value="Borrar" action="#{loginBacking.borrarUsuario(usuario.id)}"> </h:commandButton> 
+                                <h:commandButton value="Modificar Usuario" action="/admin/Usuarios/edit.xhtml?faces-redirect=true"> </h:commandButton> 
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+        </ui:component>
+        <h:link outcome="/admin/Usuarios/new.xhtml" class="btn btn-link">Crear Usuario</h:link>
+        <h:link outcome="../../newhtml.html" class="btn btn-link">Regresar a inicio</h:link>
+    </h:body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ver Galpones</title>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form id="TematicasExistentes">
+            <p:growl id="msgs" showDetail="true" />
+            <p:dataTable value="#{backingGalpon.galpones}" var="galpon">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Capacidad"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{galpon.capacidad}" ></h:outputText>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre del Galpon"></h:outputText>
+                    </f:facet> 
+                    <h:outputText value="#{galpon.nombre}" ></h:outputText>                          
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Numero de galpon"></h:outputText>
+                    </f:facet> 
+                    <h:outputText value="#{galpon.numero}" ></h:outputText>                          
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Temperatura"></h:outputText>
+                    </f:facet> 
+                    <h:outputText value="#{galpon.temperatura}" ></h:outputText>                          
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+        <h:link outcome="/admin/Galpon/newGalpon.xhtml" class="btn btn-link">Crear un Galpon</h:link>
+        <h:link outcome="/admin/Cerdo/newcerdo.xhtml" class="btn btn-link">Regresar a inicio</h:link>
+    </h:body>
+</html>
+

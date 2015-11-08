@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Agregar Cerdos</title>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form id="tematica">
+            <p:growl id="msgs" showDetail="true" />
+            <p:panel header="Modificar datos de un cerdo" style="margin-bottom:10px;">
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Numero de Caravana:" style="font-weight:bold"/>                  
+                            <h:inputText id="nro" value="#{backingCerdo.cerdo.NCaravana}" title="nro" required="true" requiredMessage="El campo Nombre es obligatorio." />
+                            <h:outputText value="Estado Corporal:" style="font-weight:bold"/>                  
+                            <h:inputText id="estado" value="#{backingCerdo.cerdo.estadoCorporal}" title="estado" required="true" requiredMessage="El campo Nombre es obligatorio." />
+                            <h:outputText value="Galpon:" style="font-weight:bold"/>                  
+                            <h:inputText id="galpon" value="#{backingCerdo.cerdo.galpon}" title="galpon" required="true" requiredMessage="El campo Nombre es obligatorio." />
+                            <h:outputText value="Sexo:" style="font-weight:bold"/>                  
+                            <h:inputText id="sexo" value="#{backingCerdo.cerdo.sexo}" title="sexo" required="true" requiredMessage="El campo Nombre es obligatorio." />
+                            <h:commandButton action="#{backingCerdo.editarCerdo()}" value="Actualizar" class="btn btn-default btn-sm"/>
+                        </h:panelGrid>
+          </p:panel>                     
+        </h:form> 
+        <h:link outcome="/admin/Cerdo/newcerdo.xhtml" class="btn btn-link">Regresar a inicio</h:link>
+    </h:body>
+</html>

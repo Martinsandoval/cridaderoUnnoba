@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Vacunar Cerdo</title>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form id="tematica">
+            <p:growl id="msgs" showDetail="true" />
+            <p:panel header="Vacunar cerdo: #{backingCerdoVacuna.cerdo.NCaravana}" style="margin-bottom:10px;">
+                <h:panelGrid columns="2">
+                    <h:outputText value="Vacuna:"/>    
+                    <p:selectOneMenu id="vacunas" value="#{backingCerdoVacuna.nombreVacuna}" required="true" requiredMessage="No ingreso la vacuna">
+                        <f:selectItem noSelectionOption="true" itemLabel="Ninguna"/>
+                        <f:selectItems value="#{backingVacuna.vacunas}" var="vacunas" itemLabel="#{vacunas.nombre}" itemValue="#{vacunas.nombre}"/>
+                    </p:selectOneMenu>
+                    
+                     <p:outputLabel for="cerdo" value="Cerdo"/>                 
+                     <h:inputText id="cerdo" value="#{backingCerdoVacuna.idcerdo}" title="cerdo" required="true" requiredMessage="Requerido" />
+
+                    
+                    <p:outputLabel for="basic" value="Dosis"/>                 
+                    <p:spinner id="basic" suffix="Dosis" value="#{backingCerdoVacuna.dosis}" stepFactor="0.5" min="0.0"/>
+
+                    <p:outputLabel for="event" value="Fecha:" />
+                    <p:calendar id="event" value="#{backingCerdoVacuna.fecha}" required="true" requiredMessage="Obligatorio">
+                        <p:ajax event="dateSelect" listener="#{backingCerdoVacuna.onDateSelect}" update="msgs" />
+                    </p:calendar>
+                    
+                    
+                    
+                    <h:commandButton action="#{backingCerdoVacuna.registrarVacuna()}" value="Vacunar" class="btn btn-default btn-sm"/>
+                </h:panelGrid>
+            </p:panel>                     
+        </h:form> 
+        <h:link outcome="/admin/Cerdo/index.xhtml" class="btn btn-link">Regresar a Cerdos</h:link>
+    </h:body>
+</html>

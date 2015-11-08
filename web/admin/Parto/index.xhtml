@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ver Partos</title>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form id="TematicasExistentes">
+            <p:growl id="msgs" showDetail="true" />
+            <p:dataTable value="#{backingParto.partos}" var="parto"> 
+               
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cerdo"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{parto.nrocaravana}" ></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cantidad de crias"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{parto.cantChancho}" ></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cantidad de crias muertas"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{parto.cantMuertos}" ></h:outputText>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{parto.fecha}" ></h:outputText>
+                </p:column> 
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Accion"></h:outputText> 
+                    </f:facet>
+                    <h:commandButton value="Remover Parto" style="font-size: 12px" action="#{backingParto.removerParto(parto.idparto)}"> </h:commandButton>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+        <h:link outcome="/admin/Cerdo/newcerdo.xhtml" class="btn btn-link">Regresar a inicio</h:link>
+    </h:body>
+</html>
+

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ver Cerdos</title>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:dataTable id="table" value="#{backingCerdo.cerdos}" var="cerdo" paginator="true" rows="7" reflow="true" filteredValue="#{backingCerdo.filteredCerdos}" >          
+                <p:column filterBy="#{cerdo.NCaravana}" headerText="Caravana" filterMatchMode="contains">
+
+
+                    <f:facet name="header">
+                        <h:outputText value="Numero de Caravana"></h:outputText>
+                    </f:facet>
+                    <h:outputText value="#{cerdo.NCaravana}" ></h:outputText>
+                </p:column>
+                <div align="center">
+                    <p:column style="width: 55px">
+                    <f:facet name="header">
+                        <h:outputText value="Estado corporal"></h:outputText>
+                    </f:facet>                    
+                    <h:outputText value="#{cerdo.estadoCorporal}" style="alignment-adjust: central"></h:outputText>                         
+                </p:column>
+                </div>
+                <p:column style="width: 150px">
+                    <f:facet name="header">
+                        <h:outputText value="Galpon al que pertenece"></h:outputText>
+                    </f:facet>                    
+                    <h:outputText style="text-align: center" value="#{backingGalpon.getNombreGalpon(cerdo.galpon)}"></h:outputText>                              
+                </p:column>
+                <p:column style="width: 40px">
+                    <f:facet name="header">
+                        <h:outputText value="Sexo"></h:outputText>
+                    </f:facet>                     
+                    <h:outputText value="#{cerdo.sexo}"></h:outputText>                              
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Accion"></h:outputText> 
+                    </f:facet>
+                    <h:commandButton value="Editar" style="font-size: 12px" action="#{backingCerdo.irAEditar(cerdo.idcerdo)}" class="btn-primary pull-left btn "> </h:commandButton>
+                    <h:commandButton value="Eliminar" style="font-size: 12px" action="#{backingCerdo.eliminarCerdo(cerdo.idcerdo) }" class="btn-primary pull-left btn "> 
+
+                    </h:commandButton>
+                    <h:commandButton value="Ver Pesaje" style="font-size: 12px"  action="#{backingCerdo.irAPesaje(cerdo.idcerdo)}" class="btn-primary pull-left btn" /> 
+                    <h:commandButton value="Nuevo Pesaje"  style="font-size: 12px" action="#{backingCerdo.irARegistrarPesaje(cerdo.idcerdo)}" class="btn-primary pull-left btn"/>
+                    <h:commandButton value="Mover a otro galpon" style="font-size: 12px" action="#{backingCerdo.moverCerdo(cerdo.idcerdo)}" class="btn-primary pull-left btn" ></h:commandButton>
+                    <h:commandButton value="Vacunar" style="font-size: 12px" action="#{backingCerdoVacuna.irAVacunar(cerdo.idcerdo)}" class="btn-primary pull-left btn" ></h:commandButton>
+                     <h:commandButton value="Ver vacunas" style="font-size: 12px" action="#{backingCerdoVacuna.irAVerVacunas(cerdo.idcerdo)}" class="btn-primary pull-left btn" ></h:commandButton>
+                </p:column>
+            </p:dataTable>
+   </h:form>
+        
+        <h:link outcome="/admin/Cerdo/newcerdo.xhtml">Crear cerdo</h:link>
+    </h:body>
+</html>

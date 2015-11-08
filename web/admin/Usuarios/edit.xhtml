@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link href="../../resources/css/bootstrap2.css" rel="stylesheet" type="text/css"/>
+        <title>Modificar usuario</title>
+    </h:head>
+    <h:body>
+        <ui:component>
+            <h:form id="Modificar" >
+                <p:growl id="msgs" showDetail="true" />
+                <p:panel header="Modificar usuarios existentes" style="margin-bottom:10px;">
+                    <p:dataTable value="#{loginBacking.usuarios}" var="usuario" >
+                        <p:column>
+                            <h:outputText value="Usuario:"/>
+                            <h:inputText id="usuario" value="#{usuario.usuario}" title="usuario" required="true" requiredMessage="El campo Usuario es obligatorio." />
+                        </p:column>
+                        <p:column>
+                            <h:outputText value="Constraseña:"/>
+                            <h:inputSecret value="#{usuario.contraseña}" required="true" requiredMessage="#{text.mensaje}"/>
+                        </p:column>                        
+                    </p:dataTable>
+                    <h:commandButton action="#{loginBacking.modificarUsuario(usuario)}" value="Modificar" class="btn" type="button" />
+                </p:panel>
+            </h:form>
+        </ui:component>
+        <h:link outcome="/admin/Cerdo/newcerdo.xhtml" class="btn btn-link">Regresar a inicio</h:link>
+    </h:body>
+</html>
+

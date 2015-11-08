@@ -1,0 +1,13 @@
+.jumbotron{
+    background-color: #1b6d85;
+    background-image: url("/Foto/unnoba.jpg");
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 20px 0;
+  
+}
+
+.img-login{
+    height: 400px;
+    width: 620px;
+}

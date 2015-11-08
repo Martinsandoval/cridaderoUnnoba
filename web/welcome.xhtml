@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <link type="text/css" rel="stylesheet" href="resources/css/bootstrap2.css"/>
+        <link type="text/css" rel="stylesheet" href="resources/css/css.css"/>
+        
+    </head>
+    <body>
+        <div class="row">
+			<div class="posts col-md-9">
+				<div class="miga-de-pan">
+					<ol class="breadcrumb">
+                                            <p:dataList value="#{backingNavegacion.paginas}" var="pagina">
+						<li>#{pagina}</li>
+                                            </p:dataList>
+					</ol>
+				</div>
+                        </div>
+        </div>
+    </body>
+</html>
